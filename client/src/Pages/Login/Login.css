@@ -1,0 +1,115 @@
+/* =========================================
+   CONTENEDOR PRINCIPAL (Fondo)
+   ========================================= */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa todo el alto de la pantalla */
+    background-color: #f0f4f8; /* Gris azulado muy suave */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding: 20px;
+}
+
+/* =========================================
+   LA TARJETA DE LOGIN
+   ========================================= */
+.login-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px; /* Ancho máximo para que no se estire en monitores grandes */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 42, 100, 0.1); /* Sombra con un tono azulado sutil */
+    border-top: 5px solid #0056b3; /* La misma línea corporativa que usamos en las Cards */
+    text-align: center;
+}
+
+.login-card h2 {
+    color: #0d2a4c;
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.login-subtitle {
+    color: #666666;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* =========================================
+   EL FORMULARIO Y LOS INPUTS
+   ========================================= */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333333;
+}
+
+.input-group input {
+    padding: 12px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+/* Efecto cuando el usuario hace clic para escribir */
+.input-group input:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+/* =========================================
+   BOTONES Y ENLACES
+   ========================================= */
+.btn-submit {
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #004494;
+}
+
+.login-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+}
+
+.back-link {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #0d2a4c;
+    text-decoration: underline;
+}
