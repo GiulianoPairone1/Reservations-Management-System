@@ -1,10 +1,7 @@
-/* =========================================
-   ESTILOS GENERALES
-   ========================================= */
 .Landing-container {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: #333333;
-    background-color: #f8f9fa; /* Gris súper claro para el fondo general */
+    background-color: #f8f9fa; 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,11 +11,9 @@ h1, h2, h3, h4 {
     margin-top: 0;
 }
 
-/* =========================================
-   HERO SECTION (Sección Principal)
-   ========================================= */
+
 .hero-container {
-    background-color: #0d2a4c; /* Azul corporativo muy oscuro y profesional */
+    background-color: #0d2a4c; 
     color: #ffffff;
     text-align: center;
     padding: 80px 20px;
@@ -33,21 +28,19 @@ h1, h2, h3, h4 {
 .hero-container h3 {
     font-size: 1.2rem;
     font-weight: 300;
-    color: #cce0ff; /* Celeste claro para que contraste y se lea bien */
+    color: #cce0ff; 
     max-width: 700px;
     margin: 0 auto 40px auto;
     line-height: 1.6;
 }
 
-/* --- Botones del Hero --- */
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap; /* Para que en celulares bajen si no entran */
+    flex-wrap: wrap; 
 }
 
-/* Recordá que en React son <Link>, pero acá los vestimos de botones */
 .hero-buttons a {
     display: inline-block;
     padding: 15px 30px;
@@ -55,11 +48,11 @@ h1, h2, h3, h4 {
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
-    transition: all 0.3s ease; /* Animación suave al pasar el mouse */
+    transition: all 0.3s ease;
 }
 
 .hero-buttons a:first-child {
-    background-color: #0056b3; /* Azul brillante primario */
+    background-color: #0056b3;
     color: #ffffff;
     border: 2px solid #0056b3;
 }
@@ -67,7 +60,7 @@ h1, h2, h3, h4 {
 .hero-buttons a:first-child:hover {
     background-color: #004494;
     border-color: #004494;
-    transform: translateY(-2px); /* Efecto de que se levanta un poquito */
+    transform: translateY(-2px);
 }
 
 .hero-buttons a:last-child {
@@ -81,14 +74,12 @@ h1, h2, h3, h4 {
     color: #0d2a4c;
 }
 
-/* =========================================
-   INDICADORES DE CONFIANZA
-   ========================================= */
+
 .trust-indicators {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #e6f0ff; /* Fondo celeste muy sutil */
+    background-color: #e6f0ff; 
     padding: 20px;
     border-bottom: 1px solid #b3d4ff;
     color: #003d82;
@@ -101,9 +92,7 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
-/* =========================================
-   CÓMO FUNCIONA (Pasos)
-   ========================================= */
+
 .how-it-works-section {
     padding: 60px 20px;
     text-align: center;
@@ -119,7 +108,7 @@ h1, h2, h3, h4 {
 
 .steps-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grilla que se adapta a celulares sola */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 30px;
 }
 
@@ -127,7 +116,7 @@ h1, h2, h3, h4 {
     background-color: #ffffff;
     padding: 30px 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sombra muy suave y elegante */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     border: 1px solid #eaeaea;
 }
 
@@ -142,9 +131,6 @@ h1, h2, h3, h4 {
     line-height: 1.5;
 }
 
-/* =========================================
-   ESPECIALIDADES (Cards)
-   ========================================= */
 .specialities-section {
     padding: 60px 20px;
     background-color: #ffffff;
@@ -169,14 +155,14 @@ h1, h2, h3, h4 {
     background-color: #f8f9fa;
     padding: 30px;
     border-radius: 8px;
-    border-top: 5px solid #0056b3; /* Detalle corporativo en la parte superior */
+    border-top: 5px solid #0056b3;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     text-align: left;
     transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Se levanta al pasar el mouse */
+    transform: translateY(-5px);
 }
 
 .card h4 {

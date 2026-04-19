@@ -39,9 +39,9 @@ export const especialidadesUnicas = [...new Set(profesionalesData.map(p => p.esp
 export const pacienteLogueado = {
     id: 101,
     nombre: "Giuliano",
-    apellido: "Rossi",
-    dni: "35123456",
-    fechaNacimiento: "1995-08-14",
+    apellido: "Pairone",
+    dni: "41863651",
+    fechaNacimiento: "1999-05-22",
     direccion: "Av. Pellegrini 1234",
     email: "giuliano@email.com",
     // Simulamos que ya tiene un turno sacado previamente
@@ -55,3 +55,31 @@ export const pacienteLogueado = {
         }
     ]
 };
+
+export const profesionalLogueado = {
+    id: 1,
+    nombre: "Dr. Juan Pérez",
+    especialidad: "Cardiología",
+    matricula: "MP-45678",
+    email: "jperez@clinica.com",
+    // Esta vez los turnos tienen los datos del paciente
+    turnosAgendados: [
+        { idTurno: 1001, fecha: "2026-04-20", hora: "10:00", paciente: "Giuliano Rossi", dni: "35123456" },
+        { idTurno: 1002, fecha: "2026-04-20", hora: "10:30", paciente: "María Gómez", dni: "28111222" },
+        { idTurno: 1003, fecha: "2026-04-21", hora: "16:00", paciente: "Carlos Tevez", dni: "20333444" }
+    ]
+};
+
+
+export const usuariosRegistrados = [
+    {
+        email: "giuliano@email.com",
+        password: "123",
+        rol: "paciente"
+    },
+    {
+        email: "jperez@clinica.com",
+        password: "123",
+        rol: "profesional"
+    }
+];

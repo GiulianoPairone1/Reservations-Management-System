@@ -1,51 +1,42 @@
-/* =========================================
-   CONTENEDOR PRINCIPAL (Fondo)
-   ========================================= */
 .login-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ocupa todo el alto de la pantalla */
-    background-color: #f0f4f8; /* Gris azulado muy suave */
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 85vh;
+    background-color: #f4f7f9;
     padding: 20px;
 }
 
-/* =========================================
-   LA TARJETA DE LOGIN
-   ========================================= */
 .login-card {
     background-color: #ffffff;
     width: 100%;
-    max-width: 420px; /* Ancho máximo para que no se estire en monitores grandes */
+    max-width: 400px;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 42, 100, 0.1); /* Sombra con un tono azulado sutil */
-    border-top: 5px solid #0056b3; /* La misma línea corporativa que usamos en las Cards */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.login-header {
     text-align: center;
-}
-
-.login-card h2 {
-    color: #0d2a4c;
-    font-size: 1.6rem;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.login-subtitle {
-    color: #666666;
-    font-size: 0.95rem;
     margin-bottom: 30px;
 }
 
-/* =========================================
-   EL FORMULARIO Y LOS INPUTS
-   ========================================= */
+.login-header h2 {
+    color: #0d2a4c;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+
 .login-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    text-align: left;
 }
 
 .input-group {
@@ -55,61 +46,99 @@
 }
 
 .input-group label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #333333;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .input-group input {
-    padding: 12px 15px;
-    border: 1px solid #cccccc;
+    padding: 12px;
+    border: 1px solid #ced4da;
     border-radius: 6px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: all 0.2s ease;
 }
 
-/* Efecto cuando el usuario hace clic para escribir */
 .input-group input:focus {
     outline: none;
     border-color: #0056b3;
     box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
 }
 
-/* =========================================
-   BOTONES Y ENLACES
-   ========================================= */
 .btn-submit {
     background-color: #0056b3;
     color: #ffffff;
     border: none;
     padding: 14px;
     border-radius: 6px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-.btn-submit:hover {
+.btn-submit:hover:not(:disabled) {
     background-color: #004494;
 }
 
-.login-footer {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #eeeeee;
+.btn-submit:disabled {
+    background-color: #a0c4ff;
+    cursor: not-allowed;
 }
 
-.back-link {
+.error-text-alerta {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    border: 1px solid #f5c6cb;
+    text-align: center;
+}
+
+.login-footer {
+    margin-top: 30px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.login-footer p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.login-footer a {
     color: #0056b3;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: block;
+    font-size: 0.85rem;
+    color: #adb5bd !important;
+    margin-top: 10px;
 }
 
 .back-link:hover {
-    color: #0d2a4c;
-    text-decoration: underline;
+    color: #6c757d !important;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
