@@ -9,5 +9,7 @@ namespace Domain.Interfaces
 {
     public interface IAppointmentRepository:IRepositoryBase<Appointment>
     {
+        bool CheckOverlap(int doctorId, DateTime timeWindowStart, DateTime timeWindowEnd);
+        List<Appointment> GetHistoryWithDetailsByPatientId(int patientId);
     }
 }

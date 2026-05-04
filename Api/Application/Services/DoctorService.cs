@@ -26,10 +26,11 @@ namespace Application.Services
             return DoctorDTO.FromDoctor(doctor);
         }
 
-        public List<DoctorDTO> GetAll()
+        public List<DoctorDTO> GetAllDoctors()
         {
             var doctors = _idoctorrepository.GetAll();
-            return doctors.Select(doctor => DoctorDTO.FromDoctor(doctor)).ToList();
+            var doctorsDto = doctors.Select(d => DoctorDTO.FromDoctor(d)).ToList();
+            return doctorsDto;
         }
         public DoctorDTO GetDoctorByMatricula(string matricula)
         {

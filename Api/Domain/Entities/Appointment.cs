@@ -4,7 +4,7 @@
 namespace Domain.Entities
 {
     public class Appointment
-    {
+    { 
         public int Id { get; set; }
         public int? PatientId { get; set; }
         public Patient? Patient { get; set; }
@@ -14,5 +14,7 @@ namespace Domain.Entities
         public DateTime Date { get; set; }
         public AppointmentStatus Status { get; set; }=AppointmentStatus.Pendiente;
         public string Observations { get; set; } = string.Empty;
+        public string ReasonForVisit {  get; set; } = string.Empty;
+        public string Diagnosis {  get; set; } = string.Empty;
     }
 }

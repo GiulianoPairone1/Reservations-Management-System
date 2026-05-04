@@ -1,5 +1,111 @@
 [
   {
+    "ContainingType": "WebApi.Controllers.AppointmentController",
+    "Method": "Create",
+    "RelativePath": "api/Appointment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Models.Dtos.CreateAppointmentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AppointmentController",
+    "Method": "GetById",
+    "RelativePath": "api/Appointment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AppointmentController",
+    "Method": "Update",
+    "RelativePath": "api/Appointment/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Application.Models.Dtos.CreateAppointmentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AppointmentController",
+    "Method": "UpdateNotesAndStatus",
+    "RelativePath": "api/Appointment/{id}/notes",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Application.Models.Dtos.UpdateAppointmentNotesDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AppointmentController",
+    "Method": "BookAppointment",
+    "RelativePath": "api/Appointment/book",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Models.Dtos.BookAppointmentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AppointmentController",
+    "Method": "CancelAppointmentByPatient",
+    "RelativePath": "api/Appointment/cancel/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Api.Controllers.AuthenticationController",
     "Method": "Autenticar",
     "RelativePath": "api/Authentication/authenticate",
@@ -27,6 +133,16 @@
   },
   {
     "ContainingType": "Api.Controllers.DoctorController",
+    "Method": "GetAllDoctors",
+    "RelativePath": "api/Doctor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.DoctorController",
     "Method": "Add",
     "RelativePath": "api/Doctor",
     "HttpMethod": "POST",
@@ -36,6 +152,22 @@
       {
         "Name": "doctorDto",
         "Type": "Application.Models.Dtos.DoctorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.DoctorController",
+    "Method": "GetDoctorAppointments",
+    "RelativePath": "api/Doctor/{doctorId}/appointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -158,6 +290,38 @@
       {
         "Name": "patientDto",
         "Type": "Application.Models.DTOs.PatientDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.PatientController",
+    "Method": "GetPatientAppointments",
+    "RelativePath": "api/Patient/{patientId}/appointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.PatientController",
+    "Method": "GetPatientHistory",
+    "RelativePath": "api/Patient/{patientId}/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

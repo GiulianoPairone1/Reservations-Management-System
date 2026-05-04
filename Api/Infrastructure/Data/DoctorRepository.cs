@@ -36,7 +36,9 @@ namespace Infrastructure.Data
         }
         public override List<Doctor> GetAll()
         {
-            return _context.Doctors.Include(d => d.User).ToList();
+            return _context.Set<Doctor>()
+                           .Include(d => d.User) 
+                           .ToList();
         }
     }
 }

@@ -25,6 +25,16 @@
     margin-bottom: 30px;
 }
 
+.sub-menu-herramientas {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.herramienta-container {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
 .btn-tab {
     flex: 1;
     padding: 12px 20px;

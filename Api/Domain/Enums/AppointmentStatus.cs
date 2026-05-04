@@ -11,6 +11,7 @@ namespace Domain.Enums
         Pendiente,
         Atendido,
         Ausente,
+        Reservado,
         Reprogramado,
         Cancelado
     }

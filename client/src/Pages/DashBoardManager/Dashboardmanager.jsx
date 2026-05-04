@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import './Dashboardmanager.css';
 import { getManagerProfile, updateManagerProfile } from "../../services/api";
+import CreateDoctorForm from './CreateDoctorForm'; 
+import CreateManagerForm from './CreateManagerForm'; 
+import CreateAppointmentForm from './CreateAppointmentForm';
+import EditAppointmentForm from "./EditAppointment Form";
+import EditDoctorForm from "./EditDoctorFrom";
 
-const Dashboardmanager = () => {
+// Placeholders para los que todavía no armamos
+
+const Dashboardmanager = () => { 
     const [pestañaActiva, setPestañaActiva] = useState("miPerfil");
+    const [herramientaActiva, setHerramientaActiva] = useState("createDoctor");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
@@ -67,6 +75,7 @@ const Dashboardmanager = () => {
 
     return (
         <section className="perfil-wrapper">
+            {/* MENÚ PRINCIPAL */}
             <div className="section1 opciones-grid">
                 <button
                     className={`btn-tab ${pestañaActiva === "miPerfil" ? "activo" : ""}`}
@@ -156,14 +165,49 @@ const Dashboardmanager = () => {
                             </>
                         )}
                     </div>
-                </div>}
+                </div>
+            }
 
             {pestañaActiva === "opciones" && (
                 <div className="section2 paso-container animate-fade-in">
-                    <h2 className="titulo-seccion">Panel de Control</h2>
-                    <p className="mensaje-vacio">
-                        Módulo de gestión de doctores, pacientes y auditoría de turnos.
-                    </p>
+                    <h2 className="titulo-seccion">Panel de Control Global</h2>
+                    
+                    {/* SUB-MENÚ DE HERRAMIENTAS */}
+                    <div className="opciones-grid sub-menu-herramientas">
+                        <button 
+                            className={`btn-tab ${herramientaActiva === "createDoctor" ? "activo" : ""}`}
+                            onClick={() => setHerramientaActiva("createDoctor")}
+                        >Crear Doctor</button>
+                        
+                        <button
+                            className={`btn-tab ${herramientaActiva === "createManager" ? "activo" : ""}`}
+                            onClick={() => setHerramientaActiva("createManager")}              
+                        >Crear Administrador</button>
+                        
+                        <button 
+                            className={`btn-tab ${herramientaActiva === "crearTurno" ? "activo" : ""}`}
+                            onClick={() => setHerramientaActiva("crearTurno")}
+                        >Crear Turno</button>
+                        
+                        <button 
+                            className={`btn-tab ${herramientaActiva === "editAppointment" ? "activo" : ""}`}
+                            onClick={() => setHerramientaActiva("editAppointment")}
+                        >Editar Turno</button>
+
+                        <button 
+                            className={`btn-tab ${herramientaActiva === "searchDoctor" ? "activo" : ""}`}
+                            onClick={() => setHerramientaActiva("searchDoctor")}
+                        >Buscar Doctor</button>
+                    </div>
+
+                    {/* CONTENEDOR DINÁMICO CORREGIDO */}
+                    <div className="herramienta-container">
+                        {herramientaActiva === "createDoctor" && <CreateDoctorForm />}
+                        {herramientaActiva === "createManager" && <CreateManagerForm />}
+                        {herramientaActiva === "crearTurno" && <CreateAppointmentForm />}
+                        {herramientaActiva === "editAppointment" && <EditAppointmentForm/>}
+                        {herramientaActiva === "searchDoctor" && <EditDoctorForm/>}
+                    </div>
                 </div>
             )}
         </section>

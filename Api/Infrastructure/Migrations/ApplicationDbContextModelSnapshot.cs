@@ -33,6 +33,10 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Diagnosis")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
@@ -42,6 +46,10 @@ namespace Infrastructure.Migrations
 
                     b.Property<int?>("PatientId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ReasonForVisit")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

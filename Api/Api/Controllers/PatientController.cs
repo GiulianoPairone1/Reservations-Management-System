@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Models.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,13 +9,17 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class PatientController : ControllerBase
-    {
+    { 
         private readonly IPatientService _patientService;
-        public PatientController(IPatientService patientService)
+        private readonly IAppointmentService _appointmentService;
+        public PatientController(IPatientService patientService, IAppointmentService appointmentService)
         {
             _patientService = patientService;
+            _appointmentService = appointmentService;
         }
 
+
+        [Authorize]
         [HttpGet("GetProfile/{userId}")]
         public IActionResult GetProfile(int userId)
         {
@@ -29,6 +34,9 @@ namespace Api.Controllers
             }
         }
 
+
+
+        [Authorize]
         [HttpGet("GetByDni/{dni}")]
         public IActionResult GetByDni(int dni)
         {
@@ -50,6 +58,8 @@ namespace Api.Controllers
                 return StatusCode(500, $"Error inesperado: {ex.Message}");
             }
         }
+
+
 
         [HttpPost]
         public IActionResult Add([FromBody] PatientDTO patientDto)
@@ -74,6 +84,9 @@ namespace Api.Controllers
             }
         }
 
+
+
+        [Authorize(Roles = "Manager,Patient")]
         [HttpPut("UpdateProfile/{patientId}")] 
         public IActionResult UpdateProfile(int patientId, [FromBody] PatientDTO patientDto)
         {
@@ -93,5 +106,37 @@ namespace Api.Controllers
         }
 
 
+
+        [Authorize(Roles = "Manager,Patient")]
+        [HttpGet("{patientId}/appointments")]
+        public IActionResult GetPatientAppointments(int patientId)
+        {
+            try
+            {
+                var appointments = _appointmentService.GetByPatientId(patientId);
+                return Ok(appointments);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error inesperado al cargar las reservas: {ex.Message}");
+            }
+        }
+
+
+
+        [Authorize(Roles = "Manager,Patient,Doctor")]
+        [HttpGet("{patientId}/history")]
+        public IActionResult GetPatientHistory(int patientId)
+        {
+            try
+            {
+                var history = _appointmentService.GetPatientHistory(patientId);
+                return Ok(history);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener el historial clínico: {ex.Message}");
+            }
+        }
     }
 }

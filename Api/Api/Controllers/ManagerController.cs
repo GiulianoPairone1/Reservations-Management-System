@@ -2,6 +2,7 @@
 using Application.Models.Dtos;
 using Application.Models.DTOs;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +12,14 @@ namespace Api.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        private readonly IManagerService _managerService;
+        private readonly IManagerService _managerService; 
         public ManagerController(IManagerService managerService)
         {
             _managerService = managerService;
         }
 
+        
+        [Authorize]
         [HttpGet("GetProfile/{userId}")]
         public IActionResult GetProfile(int userId)
         {
@@ -31,6 +34,7 @@ namespace Api.Controllers
             }
         }
 
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         public IActionResult Add([FromBody] ManagerDTO managertDto)
         {
@@ -54,6 +58,7 @@ namespace Api.Controllers
             }
         }
 
+        [Authorize(Roles = "Manager")]
         [HttpPut("UpdateProfile/{managerId}")] 
         public IActionResult UpdateProfile(int managerId, [FromBody] ManagerDTO managerDto)
         {

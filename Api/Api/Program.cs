@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//CONFIGURACIÓN JWT
+//Configuracion JWT
 builder.Services.Configure<AutenticacionService.AutenticacionServiceOptions>(
     builder.Configuration.GetSection("AutenticacionService")
 );
@@ -41,11 +41,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 #region Repositories
-builder.Services.AddScoped<IUserRepository, UserRepository>(); // ¡Agregado: Vital para el Login!
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IManagerRepository, ManagerRepository>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
-builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>(); // ¡Agregado para los turnos!
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 #endregion
 
 #region Services
@@ -53,9 +53,10 @@ builder.Services.AddScoped<ICustomAuthenticationService, AutenticacionService>()
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IManagerService, ManagerService>();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 #endregion
 
-// Conectar con React
+// Coneccion para React
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact",
@@ -74,10 +75,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Permitimos que React entre (CORS)
 app.UseCors("AllowReact");
 
-// Verificamosel usuario (Authentication)
 app.UseAuthentication();
 
 app.UseAuthorization();
