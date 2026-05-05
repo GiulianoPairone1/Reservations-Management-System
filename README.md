@@ -1,3 +1,9 @@
+Sobre el Proyecto
+
+Clínica Integral es una aplicación web Full-Stack diseñada para digitalizar y optimizar la gestión de centros médicos. Este sistema funciona como un CRM completo, permitiendo la administración eficiente de agendas médicas, turnos de pacientes y el control de historias clínicas digitales.
+
+El proyecto fue desarrollado desde cero con un enfoque en la escalabilidad, la seguridad y la experiencia de usuario (UX/UI), aplicando principios de diseño modular en el frontend y una arquitectura robusta en el backend.
+
 ---Características Principales (Features)
 
 El sistema está dividido en accesos basados en roles (RBAC) para garantizar la seguridad y privacidad de la información:
@@ -57,3 +63,10 @@ Clean Architecture: Separación clara entre la capa de presentación (Controlado
 Componentización: Desarrollo frontend basado en componentes reutilizables (DRY) para formularios, modales y listas.
 
 UX/UI: Diseño responsivo, manejo de estados de carga (Loaders), prevención de errores de usuario y notificaciones visuales (Alertas de éxito/error).
+
+Autor: 
+Giuliano Jose Pairone
+
+LinkedIn: www.linkedin.com/in/giuliano-pairone-4094232ba
+
+GitHub: @GiulianoPairone1
