@@ -29,13 +29,11 @@ namespace Application.Services
                 throw new InvalidOperationException("Los turnos deben crearse en bloques exactos de 30 minutos (ej. 10:00, 10:30).");
             }
 
-            // Eliminamos  segundos / milisegundos para no tener problemas
             var cleanDate = new DateTime(dto.Date.Year, dto.Date.Month, dto.Date.Day, dto.Date.Hour, dto.Date.Minute, 0);
             dto.Date = cleanDate;
             var timeWindowStart = dto.Date.AddMinutes(-30);
             var timeWindowEnd = dto.Date.AddMinutes(30);
 
-            // Se consulta con el repository para verificar que no haya superposicion con los turnos de los doctores
             bool existsOverlap = _appointmentRepository.CheckOverlap(dto.DoctorId, timeWindowStart, timeWindowEnd);
             if (existsOverlap)
             {

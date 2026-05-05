@@ -88,7 +88,7 @@ const EditAppointmentForm = () => {
 
             setMensaje({ tipo: 'exito', texto: "¡Turno actualizado y reprogramado correctamente!" });
             setTurnoActual(null); 
-            handleBuscarTurnosDelDoctor(doctorBusquedaId); // Refresca la lista
+            handleBuscarTurnosDelDoctor(doctorBusquedaId);
 
         } catch (error) {
             console.error(error);

@@ -25,7 +25,7 @@ const EditDoctorForm = () => {
                 phoneNumber: data.phoneNumber,
                 matricula: data.matricula,
                 specialty: data.specialty,
-                password: "" // Por seguridad, arranca vacío
+                password: "" 
             });
         } catch (error) {
             setDoctorActual(null);

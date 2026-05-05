@@ -16,7 +16,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border-left: 4px solid #0056b3; /* Color corporativo para los turnos del paciente */
+    border-left: 4px solid #0056b3;
 }
 
 .turno-card:hover {
@@ -63,7 +63,6 @@
     margin-right: 5px;
 }
 
-/* Botón específico para cancelar turnos */
 .btn-cancelar-turno {
     background-color: transparent;
     border: 2px solid #dc3545;
@@ -87,7 +86,6 @@
     cursor: not-allowed;
 }
 
-/* --- HISTORIAL CLÍNICO --- */
 .historial-container {
     display: flex;
     flex-direction: column;

@@ -17,6 +17,7 @@ const Dashboardprofesional = () => {
     const [error, setError] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     
+    // Dejamos el estado inicial limpio
     const [datosForm, setDatosForm] = useState({
         id: 0, name: "", surname: "", email: "", phoneNumber: "", specialty: "", matricula: "", password: "" 
     });
@@ -195,7 +196,6 @@ const Dashboardprofesional = () => {
             });
         } catch (err) {
             console.error(err);
-            // Si el backend responde 404, el mensaje suele venir en la excepción
             if (err.message.includes("404") || err.message.toLowerCase().includes("not found")) {
                 setError("No existe ningún paciente registrado con ese DNI.");
             } else {
@@ -228,7 +228,6 @@ const Dashboardprofesional = () => {
                 <button className={`btn-tab ${pestañaActiva === "buscadorHistorial" ? "activo" : ""}`} onClick={() => setPestañaActiva("buscadorHistorial")}>Buscar Paciente</button>
             </div>
 
-            {/* VISTA: MI PERFIL */}
             {pestañaActiva === "miPerfil" && (
                 <div className="section2 paso-container animate-fade-in">
                     <div className="header-seccion-perfil">
@@ -253,7 +252,6 @@ const Dashboardprofesional = () => {
                 </div>
             )}
 
-            {/* VISTA: MI AGENDA */}
             {pestañaActiva === "miAgenda" && (
                 <div className="section2 paso-container animate-fade-in">
                     <div className="header-agenda">
@@ -298,50 +296,49 @@ const Dashboardprofesional = () => {
                 </div>
             )}
 
-            {/* VISTA: BUSCADOR DE HISTORIAL */}
             {pestañaActiva === "buscadorHistorial" && (
                 <div className="section2 paso-container animate-fade-in">
                     <div className="header-seccion-perfil">
                         <h3 className="titulo-seccion">Buscador de Historias Clínicas</h3>
                     </div>
 
-                    <form onSubmit={handleBuscarHistorialPorDNI} className="filtros-container" style={{ marginBottom: '30px', display: 'flex', gap: '10px' }}>
+                    <form onSubmit={handleBuscarHistorialPorDNI} className="buscador-dni-form">
                         <input 
                             type="number" 
-                            className="input-perfil" 
-                            placeholder="DNI del paciente..." 
+                            className="input-perfil input-busqueda" 
+                            placeholder="DNI del paciente (ej: 35123456)" 
                             value={dniBusqueda}
                             onChange={(e) => setDniBusqueda(e.target.value)}
                             required
                         />
-                        <button type="submit" className="btn-tab activo" disabled={isLoading}>{isLoading ? "Buscando..." : "🔍 Buscar"}</button>
+                        <button type="submit" className="btn-tab activo btn-accion-busqueda" disabled={isLoading}>{isLoading ? "Buscando..." : "🔍 Buscar"}</button>
                     </form>
 
-                    {/* MENSAJE DE ERROR: SI EL DNI NO EXISTE O ES INCORRECTO */}
-                    {error && <p className="error-text-alerta" style={{ textAlign: 'center', padding: '20px' }}>⚠️ {error}</p>}
+                    {error && <p className="error-text-alerta error-busqueda-centrado">⚠️ {error}</p>}
 
                     {resultadoHistorial && (
                         <div className="resultado-busqueda-clinica animate-fade-in">
-                            <h4 style={{ color: '#0d2a4c', marginBottom: '20px' }}>Paciente: {resultadoHistorial.nombre} (DNI: {resultadoHistorial.dni})</h4>
+                            <h4 className="paciente-resultado-titulo">Paciente: {resultadoHistorial.nombre} (DNI: {resultadoHistorial.dni})</h4>
                             
-                            {/* SI EL PACIENTE EXISTE PERO NO TIENE HISTORIAL */}
                             {resultadoHistorial.turnos.length === 0 ? (
-                                <div className="mensaje-vacio" style={{ backgroundColor: '#fff3cd', color: '#856404', border: '1px solid #ffeeba', padding: '20px', borderRadius: '8px' }}>
+                                <div className="mensaje-vacio-alerta">
                                     <p>El paciente existe pero <strong>no registra historial clínico</strong> (aún no ha sido atendido).</p>
                                 </div>
                             ) : (
-                                <div className="historial-grid" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                                <div className="historial-grid-resultado">
                                     {resultadoHistorial.turnos.map(item => (
-                                        <div key={item.appointmentId} className="historial-card" style={{ border: '1px solid #ced4da', borderRadius: '8px', padding: '15px', backgroundColor: '#f8f9fa' }}>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', borderBottom: '1px solid #dee2e6', paddingBottom: '5px' }}>
+                                        <div key={item.appointmentId} className="historial-card-profesional">
+                                            <div className="historial-card-top">
                                                 <strong>{new Date(item.date).toLocaleDateString('es-AR', { day: '2-digit', month: 'long', year: 'numeric' })}</strong>
-                                                <span style={{ backgroundColor: '#0056b3', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: '0.85rem' }}>{item.specialty}</span>
+                                                <span className="especialidad-tag">{item.specialty}</span>
                                             </div>
-                                            <p><strong>Profesional:</strong> {item.doctorFullName}</p>
-                                            <p><strong>Motivo:</strong> {item.reasonForVisit || "No especificado"}</p>
-                                            <div style={{ marginTop: '10px', padding: '10px', backgroundColor: '#fff', border: '1px dashed #adb5bd', borderRadius: '5px' }}>
-                                                <strong>Diagnóstico:</strong>
-                                                <p>{item.diagnosis || "Sin diagnóstico registrado."}</p>
+                                            <div className="historial-card-content">
+                                                <p><strong>Profesional:</strong> {item.doctorFullName}</p>
+                                                <p><strong>Motivo:</strong> {item.reasonForVisit || "No especificado"}</p>
+                                                <div className="diagnostico-box-profesional">
+                                                    <strong>Diagnóstico / Devolución:</strong>
+                                                    <p>{item.diagnosis || "Sin diagnóstico registrado."}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     ))}
@@ -376,14 +373,14 @@ const Dashboardprofesional = () => {
                             </div>
                             {turnoModal.patientId && (
                                 <>
-                                    <div className="form-group form-group-full" style={{ borderTop: '1px solid #ced4da', paddingTop: '15px', marginTop: '10px' }}>
-                                        <h4 style={{ color: '#0056b3', marginBottom: '15px', fontSize: '1.1rem' }}>Información Clínica</h4>
+                                    <div className="form-group form-group-full clinical-header-divider">
+                                        <h4 className="clinical-info-title">Información Clínica</h4>
                                         <label className="form-label">Motivo de la Consulta</label>
                                         <input type="text" className="input-perfil" value={motivoConsulta} onChange={(e) => setMotivoConsulta(e.target.value)} />
                                     </div>
                                     <div className="form-group form-group-full">
                                         <label className="form-label">Diagnóstico / Devolución</label>
-                                        <textarea className="input-perfil" rows="4" value={diagnostico} onChange={(e) => setDiagnostico(e.target.value)} style={{ resize: 'vertical', minHeight: '80px' }}></textarea>
+                                        <textarea className="input-perfil text-area-clinical" rows="4" value={diagnostico} onChange={(e) => setDiagnostico(e.target.value)}></textarea>
                                     </div>
                                 </>
                             )}

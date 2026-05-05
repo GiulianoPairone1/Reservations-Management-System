@@ -17,7 +17,6 @@ const ReservaPage = () => {
     const [turnosDisponibles, setTurnosDisponibles] = useState([]);
     const [turnoSeleccionado, setTurnoSeleccionado] = useState(null);
 
-    //  Buscamos el paciente que inicio sesion y los doctores
     useEffect(() => {
         const inicializarReserva = async () => {
             setIsLoading(true);

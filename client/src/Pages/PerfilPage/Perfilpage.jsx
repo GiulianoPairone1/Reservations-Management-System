@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Perfilpage.css";
-// IMPORTANTE: Sumamos getPatientHistory a las importaciones
 import { getPatientProfile, updatePatientProfile, getAppointmentsByPatientId, cancelAppointmentByPatient, getAllDoctors, getPatientHistory } from "../../services/api"; 
 
 const PerfilPage = () => {
@@ -19,7 +18,6 @@ const PerfilPage = () => {
     const [historialMedico, setHistorialMedico] = useState([]); // Nuevo estado para el historial
     const [listaDoctores, setListaDoctores] = useState([]);
 
-    // 1. Cargar datos del paciente
     useEffect(() => {
         const fetchDatos = async () => {
             setIsLoading(true);
@@ -39,7 +37,6 @@ const PerfilPage = () => {
         fetchDatos();
     }, []); 
 
-    // 2. Cargar Próximas Reservas
     useEffect(() => {
         if (pestañaActiva === "misReservas" && datosForm.id !== 0) {
             const fetchReservasYDoctores = async () => {
@@ -53,7 +50,6 @@ const PerfilPage = () => {
                     const hoy = new Date();
                     hoy.setHours(0, 0, 0, 0);
 
-                    // Solo futuras y Reservadas (3)
                     const reservasActivas = reservasData.filter(turno => {
                         const fechaTurno = new Date(turno.date);
                         return fechaTurno >= hoy && turno.status === 3; 
@@ -73,7 +69,6 @@ const PerfilPage = () => {
         }
     }, [pestañaActiva, datosForm.id]);
 
-    // 3. NUEVO: Cargar Historial Médico
     useEffect(() => {
         if (pestañaActiva === "miHistorial" && datosForm.id !== 0) {
             const fetchHistorial = async () => {
@@ -93,7 +88,6 @@ const PerfilPage = () => {
         }
     }, [pestañaActiva, datosForm.id]);
 
-    // Lógicas de guardado y cancelación...
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setDatosForm({ ...datosForm, [name]: value });
@@ -140,7 +134,6 @@ const PerfilPage = () => {
         return `Médico Asignado (ID: ${doctorId})`; 
     };
 
-    // AGRUPAR HISTORIAL POR ESPECIALIDAD
     const historialAgrupado = historialMedico.reduce((acc, turno) => {
         if (!acc[turno.specialty]) {
             acc[turno.specialty] = [];
@@ -166,7 +159,6 @@ const PerfilPage = () => {
                 </button>
             </section>
 
-            {/* PESTAÑA: MIS DATOS PERSONALES */}
             {pestañaActiva === "datosPersonales" && (
                 <div className="paso-container animate-fade-in">
                     <div className="header-seccion-perfil">
@@ -194,7 +186,6 @@ const PerfilPage = () => {
                 </div>
             )} 
 
-            {/* PESTAÑA: MIS RESERVAS FUTURAS */}
             {pestañaActiva === "misReservas" && (
                 <div className="paso-container animate-fade-in">
                     <div className="header-seccion-perfil">
@@ -228,7 +219,6 @@ const PerfilPage = () => {
                 </div>
             )}
 
-            {/* PESTAÑA: MI HISTORIAL (NUEVA) */}
             {pestañaActiva === "miHistorial" && (
                 <div className="paso-container animate-fade-in">
                     <div className="header-seccion-perfil">

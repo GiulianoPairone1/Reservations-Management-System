@@ -6,8 +6,7 @@ import CreateManagerForm from './CreateManagerForm';
 import CreateAppointmentForm from './CreateAppointmentForm';
 import EditAppointmentForm from "./EditAppointment Form";
 import EditDoctorForm from "./EditDoctorFrom";
-
-// Placeholders para los que todavía no armamos
+import SearchPatientHistory from "./SearchPatientHistory";
 
 const Dashboardmanager = () => { 
     const [pestañaActiva, setPestañaActiva] = useState("miPerfil");
@@ -75,7 +74,6 @@ const Dashboardmanager = () => {
 
     return (
         <section className="perfil-wrapper">
-            {/* MENÚ PRINCIPAL */}
             <div className="section1 opciones-grid">
                 <button
                     className={`btn-tab ${pestañaActiva === "miPerfil" ? "activo" : ""}`}
@@ -172,8 +170,7 @@ const Dashboardmanager = () => {
                 <div className="section2 paso-container animate-fade-in">
                     <h2 className="titulo-seccion">Panel de Control Global</h2>
                     
-                    {/* SUB-MENÚ DE HERRAMIENTAS */}
-                    <div className="opciones-grid sub-menu-herramientas">
+                    <div className="opciones-grid sub-menu-herramientas" style={{ flexWrap: 'wrap' }}>
                         <button 
                             className={`btn-tab ${herramientaActiva === "createDoctor" ? "activo" : ""}`}
                             onClick={() => setHerramientaActiva("createDoctor")}
@@ -198,15 +195,20 @@ const Dashboardmanager = () => {
                             className={`btn-tab ${herramientaActiva === "searchDoctor" ? "activo" : ""}`}
                             onClick={() => setHerramientaActiva("searchDoctor")}
                         >Buscar Doctor</button>
+
+                        <button 
+                            className={`btn-tab ${herramientaActiva === "searchPatientHistory" ? "activo" : ""}`}
+                            onClick={() => setHerramientaActiva("searchPatientHistory")}
+                        >Buscar Paciente</button>
                     </div>
 
-                    {/* CONTENEDOR DINÁMICO CORREGIDO */}
-                    <div className="herramienta-container">
+                    <div className="herramienta-container" style={{ marginTop: '20px' }}>
                         {herramientaActiva === "createDoctor" && <CreateDoctorForm />}
                         {herramientaActiva === "createManager" && <CreateManagerForm />}
                         {herramientaActiva === "crearTurno" && <CreateAppointmentForm />}
                         {herramientaActiva === "editAppointment" && <EditAppointmentForm/>}
                         {herramientaActiva === "searchDoctor" && <EditDoctorForm/>}
+                        {herramientaActiva === "searchPatientHistory" && <SearchPatientHistory />}
                     </div>
                 </div>
             )}
